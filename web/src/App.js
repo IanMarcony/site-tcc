@@ -1,11 +1,8 @@
-import React from 'react';
+import React from "react";
+import Landing from "./views/Landing";
 
 function App() {
-  return (
-    <div className="App">
-       <h1>eae</h1>
-    </div>
-  );
+  return <Landing />;
 }
 
 export default App;
