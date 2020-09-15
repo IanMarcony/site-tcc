@@ -1,0 +1,63 @@
+.group-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+}
+.group-input label {
+  font: 400 20px Fira Code;
+  align-self: flex-start;
+  padding: 5px;
+}
+
+.group-input input {
+  width: 350px;
+  height: 40px;
+  border-radius: 8px;
+  border-color: #d27d2c;
+  background-color: #595652;
+  padding: 5px;
+  font: 400 14px Fira Code;
+}
+
+button {
+  width: 150px;
+  height: 40px;
+  cursor: pointer;
+  font-size: larger;
+  border-radius: 8px;
+  background-color: #d27d2c;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  width: 150px;
+  height: 40px;
+  text-decoration: none;
+  justify-content: center;
+  font-size: larger;
+  text-align: center;
+  align-items: center;
+  background-color: #595652;
+  margin-left: 10px;
+  padding: 5px;
+  transition: 0.2s background-color;
+  border-radius: 8px;
+}
+
+a:hover {
+  text-decoration: none;
+  background-color: #333230;
+  padding: 5px;
+}
+
+.button-group {
+  width: 100%;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
