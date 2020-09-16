@@ -6,3 +6,8 @@
   color: #fff;
   font-family: Fira Code;
 }
+
+h1,
+p {
+  font: 400 12pt Fira Code;
+}

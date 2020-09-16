@@ -1,0 +1,133 @@
+.content {
+  justify-content: center;
+  align-items: center;
+}
+.banner-image {
+  width: 95%;
+  height: 720px;
+  background-image: url("../../assets/images/parthenon_background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 10px auto;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-shadow: #8e140f -2px 2px 5px;
+  font: 700 14pt Fira Code;
+  color: #fff;
+  padding: 40px;
+}
+
+.about-project {
+  width: 100%;
+  height: max-content;
+  background-color: rgb(41, 38, 38);
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.about-project h1 {
+  text-align: left;
+  background-color: rgb(41, 38, 38);
+
+  font: 700 20pt Fira Code;
+  margin-bottom: 10px;
+}
+
+.about-project h1 + h1 {
+  margin-top: 10px;
+}
+.about-project p {
+  background-color: rgb(41, 38, 38);
+  text-align: justify;
+  margin-left: 10px;
+  padding: 15px;
+}
+
+.about-group {
+  width: 100%;
+  height: max-content;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.about-group ul {
+  display: grid;
+  list-style-type: none;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 10px;
+}
+
+.about-group li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px;
+}
+.about-group li img {
+  width: 150px;
+  height: 150px;
+
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.about-group li p {
+  text-align: justify;
+}
+
+.about-tech {
+  width: 100%;
+  height: max-content;
+  background-color: rgb(41, 38, 38);
+  justify-content: center;
+  padding: 10px;
+  margin: 10px auto;
+}
+.about-tech h1 {
+  text-align: left;
+  background-color: rgb(41, 38, 38);
+  font: 700 20pt Fira Code;
+  margin-bottom: 10px;
+}
+
+#group-tech {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(41, 38, 38);
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+#group-tech img {
+  width: 100px;
+  height: 100px;
+  background-color: rgb(41, 38, 38);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+#group-tech p {
+  background-color: rgb(41, 38, 38);
+  text-align: justify;
+}
+.video-apresent {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  height: max-content;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+.video-apresent h1 {
+  text-align: left;
+  font: 700 20pt Fira Code;
+  margin-bottom: 10px;
+}
