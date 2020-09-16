@@ -143,6 +143,9 @@ function HomePage() {
             </p>
           </div>
           <div className="about-group">
+            <h1 style={{ textAlign: "center", fontSize: "24pt" }}>
+              Integrantes da equipe
+            </h1>
             <ul>
               <li>
                 <img
@@ -263,65 +266,84 @@ function HomePage() {
           </div>
 
           <div
-            className="form-suggests-group"
             style={{
               display: "flex",
-              height: 300,
-              justifyContent: "space-between",
+              width: "100%",
+              flexDirection: "column",
               backgroundColor: "#292626",
             }}
           >
-            {" "}
-            <ul
+            <h1
               style={{
-                width: "50%",
-                height: "100%",
-                position: "relative",
-                float: "left",
-                overflow: "auto",
+                textAlign: "center",
                 backgroundColor: "#292626",
+                margin: 10,
+                fontSize: "24pt",
               }}
             >
-              {posts.map((item) => (
-                <Suggests
-                  author={item.name}
-                  date={item.date}
-                  suggest={item.suggest}
-                />
-              ))}
-            </ul>
-            <form
-              className="form-send-suggest"
-              style={{ width: "50%", float: "right" }}
+              Sugestões
+            </h1>{" "}
+            <div
+              className="form-suggests-group"
+              style={{
+                backgroundColor: "#292626",
+                display: "flex",
+                width: "100%",
+                height: 300,
+                justifyContent: "space-between",
+              }}
             >
-              <div
-                className="group-input"
+              <ul
                 style={{
-                  display: "flex",
-                  flexDirection: "column",
+                  width: "50%",
+                  height: "100%",
+                  position: "relative",
+                  float: "left",
+                  overflow: "auto",
                   backgroundColor: "#292626",
                 }}
               >
-                <label
-                  htmlFor="sendSuggest"
+                {posts.map((item) => (
+                  <Suggests
+                    author={item.name}
+                    date={item.date}
+                    suggest={item.suggest}
+                  />
+                ))}
+              </ul>
+              <form
+                className="form-send-suggest"
+                style={{ width: "50%", float: "right" }}
+              >
+                <div
+                  className="group-input"
                   style={{
-                    textAlign: "left",
-                    margin: 10,
+                    display: "flex",
+                    flexDirection: "column",
                     backgroundColor: "#292626",
                   }}
                 >
-                  Deixei aqui sua Sugestão
-                </label>
-                <textarea
-                  id="sendSuggest"
-                  value={sendSuggest}
-                  onChange={({ value }) => setSendSuggest(value)}
-                />
-              </div>
-              <button type="submit" id="button-form">
-                Enviar
-              </button>
-            </form>
+                  <label
+                    htmlFor="sendSuggest"
+                    style={{
+                      textAlign: "left",
+                      margin: 10,
+                      backgroundColor: "#292626",
+                    }}
+                  >
+                    Deixe aqui sua Sugestão
+                  </label>
+                  <textarea
+                    id="sendSuggest"
+                    value={sendSuggest}
+                    onChange={({ value }) => setSendSuggest(value)}
+                  />
+                </div>
+                <button type="submit" id="button-form">
+                  Enviar
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
