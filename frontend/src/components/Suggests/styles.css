@@ -1,0 +1,33 @@
+.suggest {
+  background-color: rgb(17, 16, 16);
+  width: 210px;
+  height: 250px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 8px;
+
+  margin: 10px auto;
+  padding: 15px;
+
+  box-shadow: #d27d2c -3px 2px 0px;
+}
+
+.suggest h1 {
+  background-color: rgb(17, 16, 16);
+  text-align: left;
+  font-size: 20pt;
+}
+
+.suggest h2 {
+  background-color: rgb(17, 16, 16);
+  text-align: left;
+  font-size: 14pt;
+}
+
+.suggest p {
+  margin-top: 5px;
+  text-align: justify;
+  background-color: rgb(17, 16, 16);
+}

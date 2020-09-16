@@ -59,7 +59,7 @@ function RegisterPage() {
               }}
               onSubmit={registerUser}
             >
-              <div className="group-input">
+              <div id="group-input">
                 <label htmlFor="username">Nome</label>
                 <input
                   id="username"
@@ -67,7 +67,7 @@ function RegisterPage() {
                   onChange={({ value }) => setUsername(value)}
                 />
               </div>
-              <div className="group-input">
+              <div id="group-input">
                 <label htmlFor="email">Email</label>
                 <input
                   id="email"
@@ -75,7 +75,7 @@ function RegisterPage() {
                   onChange={({ value }) => setEmail(value)}
                 />
               </div>
-              <div className="group-input">
+              <div id="group-input">
                 <label htmlFor="Password">Digite sua senha</label>
                 <input
                   id="Password"
@@ -83,7 +83,7 @@ function RegisterPage() {
                   onChange={({ value }) => setPassword(value)}
                 />
               </div>
-              <div className="group-input">
+              <div id="group-input">
                 <label htmlFor="Password">Digite novamente sua senha</label>
                 <input
                   id="Password"
@@ -92,7 +92,7 @@ function RegisterPage() {
                 />
               </div>
 
-              <div className="button-group">
+              <div id="button-group">
                 <button type="submit">Registrar</button>
                 <Link to="/">Voltar</Link>
               </div>

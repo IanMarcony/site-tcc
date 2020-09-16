@@ -5,10 +5,46 @@ import CardIcon from "../../assets/images/icon_cardboard.png";
 
 import { Redirect } from "react-router-dom";
 
+import Suggests from "../../components/Suggests";
+
 import "./styles.css";
+
+const posts = [
+  {
+    name: "Fulano",
+    date: "20/09",
+    suggest: "Devia comer bolo de chocolate",
+  },
+  {
+    name: "Fulano",
+    date: "20/09",
+    suggest: "Devia comer bolo de chocolate",
+  },
+  {
+    name: "Fulano",
+    date: "20/09",
+    suggest: "Devia comer bolo de chocolate",
+  },
+  {
+    name: "Fulano",
+    date: "20/09",
+    suggest: "Devia comer bolo de chocolate",
+  },
+  {
+    name: "Fulano",
+    date: "20/09",
+    suggest: "Devia comer bolo de chocolate",
+  },
+  {
+    name: "Fulano",
+    date: "20/09",
+    suggest: "Devia comer bolo de chocolate",
+  },
+];
 
 function HomePage() {
   const [validation, setValidation] = useState(false);
+  const [sendSuggest, setSendSuggest] = useState("");
 
   function logoutUser() {
     setValidation(true);
@@ -131,11 +167,11 @@ function HomePage() {
               </li>
               <li>
                 <img
-                  src="https://instagram.fmao1-1.fna.fbcdn.net/v/t51.2885-19/s150x150/116237469_718817208958792_5897540116211192381_n.jpg?_nc_ht=instagram.fmao1-1.fna.fbcdn.net&_nc_ohc=bPj9u7TBDdcAX_RhPFZ&oh=13d45bb901614bdc0c4011b63a4a2f20&oe=5F8BAEB7"
+                  src="https://lh3.googleusercontent.com/a-/AOh14GgiUl2YyUslDDGTC7iWcVVaHmRFG4gxUPKbik-a=s160-p-k-no-mo"
                   alt="Pedro Gabriel"
                 />{" "}
                 <p>
-                  Pedro é o design, é ele quem definiu os estilos e modelos
+                  Pedro é o designer, é ele quem definiu os estilos e modelos
                   usados na parte gráfica do software, além disso, ele também
                   ajudou em idealizar partes do projeto e de como seria
                   organizada
@@ -224,6 +260,68 @@ function HomePage() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
             ></iframe>
+          </div>
+
+          <div
+            className="form-suggests-group"
+            style={{
+              display: "flex",
+              height: 300,
+              justifyContent: "space-between",
+              backgroundColor: "#292626",
+            }}
+          >
+            {" "}
+            <ul
+              style={{
+                width: "50%",
+                height: "100%",
+                position: "relative",
+                float: "left",
+                overflow: "auto",
+                backgroundColor: "#292626",
+              }}
+            >
+              {posts.map((item) => (
+                <Suggests
+                  author={item.name}
+                  date={item.date}
+                  suggest={item.suggest}
+                />
+              ))}
+            </ul>
+            <form
+              className="form-send-suggest"
+              style={{ width: "50%", float: "right" }}
+            >
+              <div
+                className="group-input"
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  backgroundColor: "#292626",
+                }}
+              >
+                <label
+                  htmlFor="sendSuggest"
+                  style={{
+                    textAlign: "left",
+                    margin: 10,
+                    backgroundColor: "#292626",
+                  }}
+                >
+                  Deixei aqui sua Sugestão
+                </label>
+                <textarea
+                  id="sendSuggest"
+                  value={sendSuggest}
+                  onChange={({ value }) => setSendSuggest(value)}
+                />
+              </div>
+              <button type="submit" id="button-form">
+                Enviar
+              </button>
+            </form>
           </div>
         </div>
       </div>

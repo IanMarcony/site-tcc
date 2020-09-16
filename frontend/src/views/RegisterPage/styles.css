@@ -1,17 +1,17 @@
-.group-input {
+#group-input {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 10px auto;
 }
-.group-input label {
+#group-input label {
   font: 400 20px Fira Code;
   align-self: flex-start;
   padding: 5px;
 }
 
-.group-input input {
+#group-input input {
   width: 350px;
   height: 40px;
   border-radius: 8px;
