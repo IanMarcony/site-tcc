@@ -21,10 +21,14 @@ function LoginPage() {
   }
 
   async function signinUser() {
-    const { status } = await api.post("/sigin", { email, password });
-    if (status) {
-      setValidation(true);
-      return <Redirect to="/home" />;
+    try {
+      const { status } = await api.post("/sigin", { email, password });
+      if (status) {
+        setValidation(true);
+        return <Redirect to="/home" />;
+      }
+    } catch {
+      alert("Email e/ou Senha incorretos");
     }
   }
 
