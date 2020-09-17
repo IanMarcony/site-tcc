@@ -5,6 +5,8 @@ import { Link, Redirect } from "react-router-dom";
 import { Container } from "@material-ui/core";
 import { Lock as LockIcon } from "@material-ui/icons";
 
+import api from "../../services/api.js";
+
 import "./styles.css";
 
 function LoginPage() {
@@ -13,9 +15,20 @@ function LoginPage() {
 
   const [validation, setValidation] = useState(false);
 
-  function signinUser() {
-    setValidation(true);
+  async function checkTokenUser() {
+    const { status } = await api.get("/");
+    if (status) setValidation(true);
   }
+
+  async function signinUser() {
+    const { status } = await api.post("/sigin", { email, password });
+    if (status) {
+      setValidation(true);
+      return <Redirect to="/home" />;
+    }
+  }
+
+  checkTokenUser();
 
   if (validation) {
     return <Redirect to="/home" />;
@@ -62,6 +75,7 @@ function LoginPage() {
                 <label htmlFor="email">Email</label>
                 <input
                   id="email"
+                  type="email"
                   value={email}
                   onChange={({ value }) => setEmail(value)}
                 />
@@ -70,6 +84,7 @@ function LoginPage() {
                 <label htmlFor="Password">Senha</label>
                 <input
                   id="Password"
+                  type="password"
                   value={password}
                   onChange={({ value }) => setPassword(value)}
                 />
