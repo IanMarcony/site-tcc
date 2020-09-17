@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Logo from "../../assets/images/Logomarca_CLIO.jpg";
 import UnityIcon from "../../assets/images/icon_unity.png";
 import CardIcon from "../../assets/images/icon_cardboard.png";
+import api from "../../services/api.js";
 
 import { Redirect } from "react-router-dom";
 
@@ -43,14 +44,14 @@ const posts = [
 ];
 
 function HomePage() {
-  const [validation, setValidation] = useState(false);
+  const [validation, setValidation] = useState(true);
   const [sendSuggest, setSendSuggest] = useState("");
 
   function logoutUser() {
-    setValidation(true);
+    setValidation(false);
   }
 
-  if (validation) {
+  if (!validation) {
     return <Redirect to="/" />;
   } else {
     return (

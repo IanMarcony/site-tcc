@@ -15,16 +15,6 @@ function LoginPage() {
 
   const [validation, setValidation] = useState(false);
 
-  async function enterLanding() {
-    try {
-      const { statusToken } = await api.get("/");
-
-      console.log(statusToken);
-    } catch {
-      alert("Erro ao acessar o backend");
-    }
-  }
-
   async function signinUser() {
     if (email === "" && password === "") return alert("Preencha os campos");
 
@@ -39,8 +29,6 @@ function LoginPage() {
       alert("Email e/ou Senha incorretos");
     }
   }
-
-  enterLanding();
 
   if (validation) {
     return <Redirect to="/home" />;

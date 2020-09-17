@@ -8,13 +8,6 @@ let users = [
 var validation = false;
 
 module.exports = {
-  checkToken(req, res) {
-    if (validation) {
-      return res.status(200).json({ statusToken: validation });
-    } else {
-      return res.status(200).json({ statusToken: validation });
-    }
-  },
   async signin(req, res) {
     const { email, password } = await req.body;
     validation = false;
