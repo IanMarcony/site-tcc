@@ -15,14 +15,22 @@ function LoginPage() {
 
   const [validation, setValidation] = useState(false);
 
-  async function checkTokenUser() {
-    const { status } = await api.get("/");
-    if (status) setValidation(true);
+  async function enterLanding() {
+    try {
+      const { statusToken } = await api.get("/");
+
+      console.log(statusToken);
+    } catch {
+      alert("Erro ao acessar o backend");
+    }
   }
 
   async function signinUser() {
+    if (email === "" && password === "") return alert("Preencha os campos");
+
     try {
-      const { status } = await api.post("/sigin", { email, password });
+      const { status } = await api.post("/signin", { email, password });
+      console.log(status);
       if (status) {
         setValidation(true);
         return <Redirect to="/home" />;
@@ -32,7 +40,7 @@ function LoginPage() {
     }
   }
 
-  checkTokenUser();
+  enterLanding();
 
   if (validation) {
     return <Redirect to="/home" />;

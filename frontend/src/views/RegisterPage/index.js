@@ -4,18 +4,32 @@ import { PersonAdd } from "@material-ui/icons";
 
 import { Link, Redirect } from "react-router-dom";
 
+import api from "../../services/api.js";
+
 import "./styles.css";
 
 function RegisterPage() {
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [npassword, setNPassword] = useState("");
 
   const [validation, setValidation] = useState(false);
 
-  function registerUser() {
-    setValidation(true);
+  async function registerUser() {
+    if (password !== npassword) return alert("As senhas não coincidem");
+
+    const data = { name, email, password };
+    try {
+      const { status, created } = await api.post("/register", data);
+      console.log(status, created);
+      if (status === true && created === true) {
+        setValidation(true);
+        return <Redirect to="/home" />;
+      }
+    } catch {
+      alert("Erro ao criar usuário");
+    }
   }
 
   if (validation) {
@@ -63,14 +77,16 @@ function RegisterPage() {
                 <label htmlFor="username">Nome</label>
                 <input
                   id="username"
-                  value={username}
-                  onChange={({ value }) => setUsername(value)}
+                  type="text"
+                  value={name}
+                  onChange={({ value }) => setName(value)}
                 />
               </div>
               <div id="group-input">
                 <label htmlFor="email">Email</label>
                 <input
                   id="email"
+                  type="email"
                   value={email}
                   onChange={({ value }) => setEmail(value)}
                 />
@@ -79,6 +95,7 @@ function RegisterPage() {
                 <label htmlFor="Password">Digite sua senha</label>
                 <input
                   id="Password"
+                  type="password"
                   value={password}
                   onChange={({ value }) => setPassword(value)}
                 />
@@ -87,6 +104,7 @@ function RegisterPage() {
                 <label htmlFor="Password">Digite novamente sua senha</label>
                 <input
                   id="Password"
+                  type="password"
                   value={npassword}
                   onChange={({ value }) => setNPassword(value)}
                 />

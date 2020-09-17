@@ -10,9 +10,9 @@ var validation = false;
 module.exports = {
   checkToken(req, res) {
     if (validation) {
-      res.json({ status: true });
+      return res.status(200).json({ statusToken: validation });
     } else {
-      res.json({ status: false });
+      return res.status(200).json({ statusToken: validation });
     }
   },
   async signin(req, res) {
