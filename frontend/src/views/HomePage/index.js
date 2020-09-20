@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Logo from "../../assets/images/Logomarca_CLIO.jpg";
 import UnityIcon from "../../assets/images/icon_unity.png";
 import CardIcon from "../../assets/images/icon_cardboard.png";
+import api from "../../services/api.js";
 
 import Suggests from "../../components/Suggests";
 

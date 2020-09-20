@@ -5,5 +5,10 @@ const SuggestController = require("./controllers/SuggestController.js");
 
 routes.get("/", SuggestController.show);
 routes.post("/suggest", SuggestController.create);
+routes.post("/signin", UserController.signin);
+routes.post("/register", UserController.create);
+routes.get("/home", SuggestController.show);
+routes.get("/home/logout", UserController.logout);
+routes.post("/home/suggest", SuggestController.create);
 
 module.exports = routes;
