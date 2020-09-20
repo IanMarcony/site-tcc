@@ -16,12 +16,17 @@ p {
 }
 
 input,
-textarea {
+textarea,
+button {
   border-radius: 8px;
   border-color: #d27d2c;
   background-color: #595652;
   padding: 5px;
   font: 400 14px Fira Code;
+}
+
+button {
+  cursor: pointer;
 }
 
 label {
