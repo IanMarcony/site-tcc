@@ -1,4 +1,4 @@
-const connection = require("../database/connection");
+const firebase = require("../database/connection");
 
 module.exports = {
   async create(req, res) {
@@ -6,25 +6,41 @@ module.exports = {
 
     const post = { name, now, sendSuggest };
 
-    let query = "INSERT INTO posts(name,data_post,suggest) VALUE (?,?,?)";
+    const posts = await firebase.database().ref("posts");
 
-    await connection.query(
-      query,
-      [post.name, post.now, post.sendSuggest],
-      (err, result) => {
-        if (err) return res.status(400).json({ created: "NOT" });
+    let key = posts.push().key;
 
+    posts
+      .child(key)
+      .set(post)
+      .then((result) => {
         return res.status(201).json({ created: "OK" });
-      }
-    );
+      })
+      .catch((err) => {
+        return res.status(400).json({ created: "NOT" });
+      });
   },
   async show(req, res) {
-    let query = "SELECT * FROM posts";
+    await firebase
+      .database()
+      .ref("posts")
+      .once("value", (snapshot) => {
+        let arrayPost = [];
 
-    await connection.query(query, (err, result) => {
-      if (err) return res.status(400).json({ posts: [] });
+        snapshot.forEach((childItem) => {
+          let postItem = {
+            author: childItem.val().name,
+            data_post: childItem.val().now,
+            suggest: childItem.val().sendSuggest,
+          };
+          arrayPost.push(postItem);
+        });
+        if (arrayPost.length < 0) return res.status(400).json({ posts: [] });
+        return res.status(200).json({ posts: arrayPost });
+      });
 
-      return res.status(200).json({ posts: result });
-    });
+    //
+
+    // return res.status(200).json({ posts: result });
   },
 };

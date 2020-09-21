@@ -1,18 +1,19 @@
-const mysql = require("mysql");
-const dotenv = require("dotenv");
-dotenv.config();
+const firebase = require("firebase/app");
+require("firebase/database");
 
-const connection = mysql.createConnection({
-  host: process.env.MYSQL_HOST,
-  port: process.env.MYSQL_PORT,
-  user: process.env.MYSQL_USERNAME,
-  password: process.env.MYSQL_PASSWORD,
-  database: process.env.MYSQL_DATABSE,
-});
+let firebaseConfig = {
+  apiKey: "AIzaSyDlAKUE7jzCkjlrEc-bShSqC4Z2FjvAJ9E",
+  authDomain: "database-clio.firebaseapp.com",
+  databaseURL: "https://database-clio.firebaseio.com",
+  projectId: "database-clio",
+  storageBucket: "database-clio.appspot.com",
+  messagingSenderId: "628150845707",
+  appId: "1:628150845707:web:d6607d784044b95fa3620e",
+  measurementId: "G-70ZNTYYYBW",
+};
+// Initialize Firebase
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 
-connection.connect((err) => {
-  if (err) return console.log("Erro ao conectar:" + err);
-  console.log("Conectou!");
-});
-
-module.exports = connection;
+module.exports = firebase;
