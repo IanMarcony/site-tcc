@@ -29,7 +29,7 @@ module.exports = {
 
         snapshot.forEach((childItem) => {
           let postItem = {
-            author: childItem.val().name,
+            name: childItem.val().name,
             data_post: childItem.val().now,
             suggest: childItem.val().sendSuggest,
           };
