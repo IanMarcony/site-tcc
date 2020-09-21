@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Logo from "../../assets/images/Logomarca_CLIO.jpg";
 import UnityIcon from "../../assets/images/icon_unity.png";
 import CardIcon from "../../assets/images/icon_cardboard.png";
@@ -11,87 +11,57 @@ import "./styles.css";
 function HomePage() {
   const [sendSuggest, setSendSuggest] = useState("");
   const [name, setName] = useState("");
-  const [posts, setPosts] = useState([
-    {
-      author: "Fulano",
-      date: "20/09",
-      suggest: "bal abla bla",
-    },
-    {
-      author: "Fulano",
-      date: "20/09",
-      suggest: "bal abla bla",
-    },
-    {
-      author: "Fulano",
-      date: "20/09",
-      suggest: "bal abla bla",
-    },
-    {
-      author: "Fulano",
-      date: "20/09",
-      suggest: "bal abla bla",
-    },
-    {
-      author: "Fulano",
-      date: "20/09",
-      suggest: "bal abla bla",
-    },
-    {
-      author: "Fulano",
-      date: "20/09",
-      suggest: "bal abla bla",
-    },
-    {
-      author: "Fulano",
-      date: "20/09",
-      suggest: "bal abla bla",
-    },
-    {
-      author: "Fulano",
-      date: "20/09",
-      suggest: "bal abla bla",
-    },
-    {
-      author: "Fulano",
-      date: "20/09",
-      suggest: "bal abla bla",
-    },
-    {
-      author: "Fulano",
-      date: "20/09",
-      suggest: "bal abla bla",
-    },
-    {
-      author: "Fulano",
-      date: "20/09",
-      suggest: "bal abla bla",
-    },
-    {
-      author: "Fulano",
-      date: "20/09",
-      suggest: "bal abla bla",
-    },
-    {
-      author: "Fulano",
-      date: "20/09",
-      suggest: "bal abla bla",
-    },
-    {
-      author: "Fulano",
-      date: "20/09",
-      suggest: "bal abla bla",
-    },
-    {
-      author: "Fulano",
-      date: "20/09",
-      suggest: "bal abla bla",
-    },
-  ]);
+  const [posts, setPosts] = useState([]);
 
-  async function getAllPosts() {}
+  async function getAllPosts() {
+    await api
+      .get("/")
+      .then((res) => {
+        console.log(res.data.posts);
 
-  async function createPost() {}
+        if (res.data.posts.length > 0)
+          return setPosts(res.data.posts.reverse(), ...posts);
+
+        return alert("Erro ao recuperar todas as sugestões");
+      })
+      .catch((err) => {
+        alert("Erro ao acessar banco de dados");
+      });
+  }
+
+  async function createPost(e) {
+    e.preventDefault();
+    const date_sys = new Date();
+    var now =
+      date_sys.getDate() +
+      "/" +
+      date_sys.getMonth() +
+      "/" +
+      date_sys.getFullYear();
+
+    const data = {
+      name,
+      now,
+      sendSuggest,
+    };
+
+    await api
+      .post("/suggest", data)
+      .then((response) => {
+        const { created } = response.data;
+
+        if (created === "OK") return getAllPosts();
+
+        return alert("Erro ao registrar sugestão");
+      })
+      .catch((err) => {
+        alert("Erro ao acessar banco de dados");
+      });
+  }
+
+  useEffect(() => {
+    getAllPosts();
+  }, []);
 
   return (
     <div className="home-page-container">
@@ -333,8 +303,8 @@ function HomePage() {
               >
                 {posts.map((item) => (
                   <Suggests
-                    author={item.author}
-                    date={item.date}
+                    author={item.name}
+                    date={item.data_post}
                     suggest={item.suggest}
                   />
                 ))}
@@ -363,6 +333,7 @@ function HomePage() {
 
             <form
               className="form-send-suggest"
+              onSubmit={createPost}
               style={{ width: "50%", float: "right" }}
             >
               <h1
@@ -396,7 +367,7 @@ function HomePage() {
                   type="text"
                   id="name"
                   value={name}
-                  onChange={({ value }) => setName(value)}
+                  onChange={(e) => setName(e.target.value)}
                 />
               </div>
 
@@ -421,7 +392,7 @@ function HomePage() {
                 <textarea
                   id="sendSuggest"
                   value={sendSuggest}
-                  onChange={({ value }) => setSendSuggest(value)}
+                  onChange={(e) => setSendSuggest(e.target.value)}
                 />
               </div>
               <button type="submit" id="button-form">
