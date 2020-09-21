@@ -9,10 +9,10 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-app.listen(process.env.port | 3333, () => {
+app.listen(process.env.PORT || 3333, () => {
   console.log(
     "Server rodando! Disponível em http://localhost:" +
-      (process.env.port | 3333) +
+      (process.env.PORT || 3333) +
       ""
   );
 });
