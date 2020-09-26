@@ -6,7 +6,7 @@
 ### 1. Tecnologias Utilizadas :computer:
 - React JS: Framework utilizado para produzir todo o frontend. [Documentação REACT JS](https://pt-br.reactjs.org/docs/getting-started.html)
 - Node JS: Esta tecnologia foi utilizada para criar o backend no modelo API REST. [Documentação NODE JS](https://nodejs.org/en/docs/)
-- Firebase: Esta tecnologia foi utlizada para servir como banco de dados para as sugestões do site. [Documentação NODE JS](https://nodejs.org/en/docs/)
+- Firebase: Esta tecnologia foi utlizada para servir como banco de dados para as sugestões do site. [Documentação Firebase](https://firebase.google.com/docs)
 ### 2. Como Instalar
 
 __Abra o terminal do Git execute os comandos__:computer:
